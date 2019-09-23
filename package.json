@@ -1,0 +1,32 @@
+{
+  "name": "@vivocha/sample-jwtlogin",
+  "version": "1.0.0",
+  "description": "Vivocha jwt token creation sample application",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "clean": "npx rimraf dist/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "vvcjwtlogin": "./dist/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "commander": "^3.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.14.18",
+    "typescript": "^3.6.3"
+  }
+}
