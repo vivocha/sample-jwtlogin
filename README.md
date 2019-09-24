@@ -12,8 +12,12 @@ $ npm i
 
 And then replace [accountid] in the sample [app.js](./public/app.js) script with your Vivocha account id.
 
-```html
-<vvc-ad-core acct="[accountid]" version="1" jwt="' + result.jwt + '" ></vvc-ad-core>
+```js
+  jQuery('<vvc-ad-core></vvc-ad-core>')
+    .attr('acct', "[accountid]")
+    .attr('jwt', jwt)
+    .attr('version', 1)
+    .appendTo("body");
 ```
 
 ### Usage:
