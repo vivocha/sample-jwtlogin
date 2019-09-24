@@ -38,7 +38,7 @@ jQuery().ready(function () {
       Cookies.set('vivochaJWT', vivochaJWT, { expires: new Date(payload.exp * 1000) });
       loadVivocha(vivochaJWT);
       // hiding login form and showing the application
-      loginForm.hide();
+      loginView.hide();
       appView.show();
     })();
     return false;
