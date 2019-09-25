@@ -4,6 +4,8 @@ function loadVivocha(jwt) {
     .attr('jwt', jwt)
     .attr('version', 1)
     .appendTo("body");
+
+  jQuery('#app code').text(jwt)
 }
 jQuery().ready(function () {
   const loginView = jQuery('#login');
