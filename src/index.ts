@@ -83,11 +83,24 @@ if (!program.token) requiredArgument('token');
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.post('/login', (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    // TODO check credentials in your DB
+    /**
+     * TODO
+     * This sample application simple checks for a password = 'password'.
+     * You should verify you user credentials here.
+     */
     if (req.body.vvcpass !== 'password') {
-      res.status(401).send({ result: false, error: 401, message: 'unauthorized', info: 'Provided credentials are not valid. Please check authentication data' });
+      res.status(401).send({
+        result: false,
+        error: 401,
+        message: 'unauthorized',
+        info: 'Provided credentials are not valid. Please check authentication data'
+      });
     } else {
-      // TODO get corresponding vivocha uid for the user
+      /**
+       * TODO
+       * This sample application assumes that the user id used in your system is the same you'll use in Vivocha.
+       * If not, you have to retrieve the Vivocha one from your mapping table and assign it to the following "uid" variable.
+       */
       const uid = req.body.vvcuser;
 
       const media: VivochaUserMedia = {};
@@ -109,7 +122,6 @@ if (!program.token) requiredArgument('token');
       if (req.body.lang) user.lang = req.body.lang;
       if (req.body.tags) user.tags = req.body.tags;
 
-      console.log(req.body.keep);
       const keep = req.body.keep && req.body.keep === 'true';
       const payload: JWTPayload = {
         uid,
