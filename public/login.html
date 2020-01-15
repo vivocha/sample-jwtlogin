@@ -10,19 +10,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="container">
-      <h2 class="form-signin-heading">Vivocha JWT Login Samples</h2>
-      <ul>
-        <li>
-          <a href="/login">Sample login page</a>
-        </li>
-        <li>
-          <a href="/sso">Sample login page with user provisioning</a>
-        </li>
-        <li>
-          <a href="/component">Sample login with web-components</a>
-        </li>
-      </ul>
-    </div>
+    <form id="login" class="container" action="/login" method="post">
+      <div class="form-group form-signin">
+        <h2 class="form-signin-heading">JWT Login</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input name="vvcuser" type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="vvcpass" type="password" id="inputPassword" class="form-control" placeholder="Password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </div>
+    </form>
   </body>
 </html>
