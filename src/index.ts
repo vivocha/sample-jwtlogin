@@ -103,32 +103,34 @@ if (!program.token) requiredArgument('token');
        */
       const uid = req.body.vvcuser;
 
-      const media: VivochaUserMedia = {};
-      if(req.body.chat) media.chat = parseInt(req.body.chat, 10);
-      if(req.body.voice) media.voice = parseInt(req.body.voice, 10);
-      if(req.body.video) media.video = parseInt(req.body.video, 10);
-
-      const user: VivochaUser = {
-        id: uid,
-        acct_id: program.account,
-        role: req.body.role || 'agent',
-        media
-      };
-      if (req.body.nickname) user.nickname = req.body.nickname;
-      if (req.body.firstname) user.firstname = req.body.firstname;
-      if (req.body.surname) user.surname = req.body.surname;
-      if (req.body.email) user.email = req.body.email;
-      if (req.body.role) user.role = req.body.role;
-      if (req.body.lang) user.lang = req.body.lang;
-      if (req.body.tags) user.tags = req.body.tags;
-
-      const keep = req.body.keep && req.body.keep === 'true';
       const payload: JWTPayload = {
         uid,
         exp: Math.round(Date.now() / 1000) + (parseInt(program.duration) || 3600) // 1 hour
       }
-      if (user) payload.user = user;
-      if (keep) payload.keep = keep;
+      if (req.body.vvcreate && req.body.vvcreate === 'true') {
+        const media: VivochaUserMedia = {};
+        if(req.body.chat) media.chat = parseInt(req.body.chat, 10);
+        if(req.body.voice) media.voice = parseInt(req.body.voice, 10);
+        if(req.body.video) media.video = parseInt(req.body.video, 10);
+  
+        const user: VivochaUser = {
+          id: uid,
+          acct_id: program.account,
+          role: req.body.role || 'agent',
+          media
+        };
+        if (req.body.nickname) user.nickname = req.body.nickname;
+        if (req.body.firstname) user.firstname = req.body.firstname;
+        if (req.body.surname) user.surname = req.body.surname;
+        if (req.body.email) user.email = req.body.email;
+        if (req.body.role) user.role = req.body.role;
+        if (req.body.lang) user.lang = req.body.lang;
+        if (req.body.tags) user.tags = req.body.tags;
+
+        const keep = req.body.keep && req.body.keep === 'true';
+        if (user) payload.user = user;
+        if (keep) payload.keep = keep;
+      }
 
       // creating the Vivocha token
       const vivochaJWT = jwt.sign(payload, program.token);
