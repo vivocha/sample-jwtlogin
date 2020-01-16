@@ -22,6 +22,40 @@ This project contains some examples of usage of the Vivocha Login API using JWT 
 ### [Vivocha API](#principles-api)
 ###### todo
 
+#### [JSON Web Token Payload](#JWTPayload)
+| PROPERTY  | VALUE                                                         | DESCRIPTION 
+|-----------|---------------------------------------------------------------|-------------
+| uid       | string                                                        | Vivocha user id
+| exp       | number                                                        | Token expiration in seconds
+| user      | (optional) object, see **[VivochaUser](#VivochaUser)** below  | Vivocha user data 
+| keep      | (optional) boolean                                            | Keep Vivocha data if user already exists
+
+#### [VivochaUser](#VivochaUser)
+| PROPERTY  | VALUE                                                         | DESCRIPTION 
+|-----------|---------------------------------------------------------------|-------------
+| role      | string, see **[VivochaUserRole](#VivochaUserRole)** below     | User Role
+| media     | object, see **[VivochaUserMedia](#VivochaUserMedia)** below   | User Media
+| firstname | (optional) string                                             | User firstname
+| surname   | (optional) string                                             | User lastname
+| nickname  | (optional) string                                             | User nickname
+| email     | (optional) string                                             | User email
+| tags      | (optional) string[]. E.g. `["tag1", "tag2", "tag3"]`          | User tags for routing
+| lang      | (optional) string. E.g., `en`, `it`, ...                      | User language
+
+#### [VivochaUserRole](#VivochaUserRole)
+VivochaUserRole possible values:
+- admin
+- supervisor
+- agent
+- auditor
+
+#### [VivochaUserMedia](#VivochaUserMedia)
+| PROPERTY  | VALUE                                                                               | DESCRIPTION 
+|-----------|-------------------------------------------------------------------------------------|-------------
+| chat      | (optional) number between between `-1` and `20` (`-1`: no limit, `0`: disabled)     | Concurrent chats
+| voice     | (optional) number between between between `0` and `1` (`0`: disabled, `1`: enabled) | Voice enabled
+| video     | (optional) number between between between `0` and `1` (`0`: disabled, `1`: enabled) | Video enabled
+
 ## [Installation](#installation)
 
 ```
