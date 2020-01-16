@@ -128,7 +128,7 @@ if (!program.token) requiredArgument('token');
         if (req.body.email) user.email = req.body.email;
         if (req.body.role) user.role = req.body.role;
         if (req.body.lang) user.lang = req.body.lang;
-        if (req.body.tags) user.tags = req.body.tags;
+        if (req.body.tags) user.tags = req.body.tags.split(',');
 
         const keep = req.body.keep && req.body.keep === 'true';
         if (user) payload.user = user;
