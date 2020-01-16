@@ -14,8 +14,6 @@ interface VivochaUserMedia {
   video?: number;
 }
 interface VivochaUser {
-  id: string;
-  acct_id: string;
   role: VivochaUserRole;
   media: VivochaUserMedia;
   firstname?: string;
@@ -117,8 +115,6 @@ if (!program.token) requiredArgument('token');
         if(req.body.video) media.video = parseInt(req.body.video, 10);
   
         const user: VivochaUser = {
-          id: uid,
-          acct_id: program.account,
           role: req.body.role || 'agent',
           media
         };
