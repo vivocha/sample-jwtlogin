@@ -78,10 +78,12 @@ if (!program.token) requiredArgument('token');
   const app = express();
   const http = require('http').Server(app);
   const host = await getHost(program.account, program.server);
+  // serve static content
   app.use(express.static('public', {index: ['index.html'], extensions: ['html']}));
   app.use('/', express.static('public', {index: ['index.html'], extensions: ['html']}));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+  // login entrypoint
   app.post('/login', (req: express.Request, res: express.Response, next: express.NextFunction) => {
     /**
      * TODO
@@ -107,6 +109,7 @@ if (!program.token) requiredArgument('token');
         uid,
         exp: Math.round(Date.now() / 1000) + (parseInt(program.duration) || 3600) // 1 hour
       }
+      // vvcreate is an hidden form field on sso.html
       if (req.body.vvcreate && req.body.vvcreate === 'true') {
         const media: VivochaUserMedia = {};
         if(req.body.chat) media.chat = parseInt(req.body.chat, 10);
