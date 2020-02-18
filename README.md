@@ -3,8 +3,9 @@
 This project contains some examples of usage of the Vivocha Login API using JWT Tokens.
 
 1. **Login with JWT.** This sample app shows how to login to Vivocha using a Single-Sign-On mechanism. The page present a simple form with login and password and login on the local system. The local server verifies the user and sign a new JWT using the Vivocha secret given for the Vivocha Account.
-2. **Dynamic provisioning on login.** This sample app extends the first one, adding the possibility to provide a new user in Vivocha or update it if already present in the Vivocha Database.
-3. **Web-Components login.** This sample shows how to retrieve a token from a local web service and login an agent using the [Vivocha web-components](https://components.vivocha.com/docs/latest/).
+2. **Login with JWT using POST.** Same as above but using a POST request to pass the access_token to the Vivocha login service.
+3. **Dynamic provisioning on login.** This sample app extends the first one, adding the possibility to provide a new user in Vivocha or update it if already present in the Vivocha Database.
+4. **Web-Components login.** This sample shows how to retrieve a token from a local web service and login an agent using the [Vivocha web-components](https://components.vivocha.com/docs/latest/).
 
 The server side application runs on [Node.js](https://nodejs.org/) and uses the library [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken).
 
