@@ -142,6 +142,7 @@ if (!program.token) requiredArgument('token');
         res.send({
           result: true,
           account: program.account,
+          loginurl: `https://${host}/a/${program.account}/login`,
           jwt: vivochaJWT
         });
       } else {
